@@ -23,3 +23,24 @@ div=$(echo "scale=2; $c /2" | bc)
 echo "$div"
 res=$((b%c))
 echo "$res"
+
+#Problema 5
+if [ $# -eq 0 ]; then
+  echo "No hay argumentos"
+else
+  echo "El numero de argumentos es: "$#
+  #$@ -> todos los argumentos pasados al script
+  echo "Los argumentos son: "$@
+fi
+# Problema 6
+if [ $# -eq 0 ]; then
+  echo "No ingreso argumentos"
+  exit 2
+elif [ $# -gt 2 ]; then
+  echo "UNICAMENTE puede copiarse un elemento a la vez"
+elif [ -e "$1" ] && [ -d "$2" ]; then
+  echo "Ambos argumentos existen"
+  cp $1 $2
+else
+  echo "Revise que ambos argumentos existan. Nota los argumentos van en orden [archivo] [ruta]"
+fi
